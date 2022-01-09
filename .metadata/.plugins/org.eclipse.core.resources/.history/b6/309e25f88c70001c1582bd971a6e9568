@@ -1,0 +1,31 @@
+package io.javabrains.springbootstarter.topics;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+
+@Service
+public class TopicService {
+	private List<Topic> listOfTopics =new ArrayList<Topic>(){{
+		new Topic(1,"venkat","Spring"),
+		new Topic(2,"Sanyog","Node"),
+		new Topic(3,"Vijay","React")
+		}};
+	
+	public List<Topic> getAllTopics()
+	{	return listOfTopics;
+	}
+	
+	public Topic getTopic(int id)
+	{
+		return listOfTopics.stream().filter(t->t.getId()==id).findFirst().get();
+	}
+	
+	public void addTopic(Topic topic)
+	{
+		listOfTopics.add(topic);
+	}
+	
+}

@@ -1,0 +1,25 @@
+package io.javabrains.springbootstarter.topics;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Service
+public class TopicService {
+	private List<Topic> listOfTopics=Arrays.asList(
+			new Topic(1,"venkat","Spring"),
+			new Topic(2,"Sanyog","Node"),
+			new Topic(3,"Vijay","React")
+			);
+	public List<Topic> getAllTopics()
+	{	return listOfTopics;
+	}
+	
+	public Topic getTopic(int id)
+	{
+		Integer y=Integer.valueOf(id);
+		return listOfTopics.stream().filter(t->Integer.valueOf(t.getId()).equals(id)).findFirst().get();
+	}
+}

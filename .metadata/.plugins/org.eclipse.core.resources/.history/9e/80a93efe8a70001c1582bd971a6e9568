@@ -1,0 +1,19 @@
+package io.javabrains.springbootstarter;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import io.javabrains.springbootstarter.topics.Topic;
+import io.javabrains.springbootstarter.topics.TopicService;
+
+
+@SpringBootApplication
+public class CourseApiApp {
+
+	public static void main(String[] args) {
+		SpringApplication.run(CourseApiApp.class, args);
+
+	}
+	
+}

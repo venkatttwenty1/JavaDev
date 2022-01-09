@@ -1,0 +1,20 @@
+package io.javabrains.springbootstarter.topics;
+
+import java.util.Array;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class TopicController {
+	@RequestMapping("/topics")
+	public List<Topics> getAllTopics()
+	{
+		return Arrays.asList(
+				new Topics(1,"venkat","Spring"),
+				new Topics(2,"Sanyog","Node"),
+				new Topics(3,"Vijay","React")
+				);
+	}
+}

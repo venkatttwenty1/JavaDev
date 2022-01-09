@@ -1,0 +1,67 @@
+package io.javabrains.springbootstarter.topics;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+@Service
+public class TopicService {
+	
+	@Autowired
+	private TopicRepository topicrepo;
+	
+	private List<Topic> listOfTopics=new ArrayList<>(Arrays.asList(
+			new Topic("1","venkat","Spring"),
+			new Topic("2","Sanyog","Node"),
+			new Topic("3","Vijay","React")
+			));
+	
+	public List<Topic> getAllTopics()
+	{	
+		List<Topic> topics =new ArrayList<Topic>();
+		topicrepo.findAll().forEach(topics::add);
+		return topics;
+	}
+	
+	public Topic getTopic(String id)
+	{
+		return listOfTopics.stream().filter(t->t.getId().equals(id)).findFirst().get();
+	}
+	
+	public void addTopic(Topic topic)
+	{
+		topicrepo.save(topic);
+	}
+	public void updateTopic(String id,Topic topic)
+	{
+		int cnt=0;
+		for(Topic t:listOfTopics)
+		{
+			cnt++;
+			if(t.getId().equals(id))
+			{
+				listOfTopics.set(cnt-1,topic);
+				return ;
+			}
+		}
+	}
+	
+	public void deleteTopic(String id,Topic topic)
+	{
+		int cnt=0;
+		for(Topic t:listOfTopics)
+		{
+			cnt++;
+			if(t.getId().equals(id))
+			{
+				listOfTopics.remove(cnt-1);
+				return ;
+			}
+		}
+	}
+	
+}

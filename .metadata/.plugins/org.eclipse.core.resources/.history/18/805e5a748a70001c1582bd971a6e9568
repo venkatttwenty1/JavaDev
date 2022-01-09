@@ -1,0 +1,19 @@
+package io.javabrains.springbootstarter;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import io.javabrains.springbootstarter.topics.Topic;
+
+@SpringBootApplication
+public class CourseApiApp {
+
+	public static void main(String[] args) {
+		Topic t1=new Topic(1,"venkat","Spring");
+		Topic t2=new Topic(2,"Sanyog","Node");
+		Topic t3=new Topic(3,"Vijay","React");
+		SpringApplication.run(CourseApiApp.class, args);
+
+	}
+	
+}
